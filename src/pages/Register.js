@@ -16,7 +16,7 @@ export default function Register() {
 
 
     const [register, { data, isLoading, error: responseErrorr }] = useRegisterMutation()
-const navigate = useNavigate()
+    const navigate = useNavigate()
 
     useEffect(() => {
         if (responseErrorr?.data) {
@@ -25,7 +25,7 @@ const navigate = useNavigate()
         if (data?.accessToken && data?.user) {
             navigate("/inbox")
         }
-    }, [data, responseErrorr,navigate])
+    }, [data, responseErrorr, navigate])
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -59,7 +59,7 @@ const navigate = useNavigate()
                             Create your account
                         </h2>
                     </div>
-                    <form onSubmit={handleSubmit} className="mt-8 space-y-6" action="#" method="POST">
+                    <form onSubmit={handleSubmit} className="mt-8 space-y-6">
                         <input type="hidden" name="remember" value="true" />
                         <div className="rounded-md shadow-sm -space-y-px">
                             <div>
