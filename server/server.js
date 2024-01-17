@@ -17,6 +17,7 @@ const rules = auth.rewriter({
     messages: 660,
 });
 
+
 server.use(rules);
 server.use(auth);
 server.use(router);
