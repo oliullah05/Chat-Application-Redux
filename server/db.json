@@ -23,6 +23,12 @@
       "password": "$2a$10$vwZ9fc7xKIKJG8KgbiqfwOBBkRTgeZf3lyy/cEtCVLWlgt2nbpegS",
       "name": "oli",
       "id": 4
+    },
+    {
+      "email": "madolihasan@gmail.com",
+      "password": "$2a$10$IvzRyaUL9jCkd2tNKNTqwuMeZ6bX2DU0mDgG4GNABDMXcr9b/7pP6",
+      "name": "oliullah",
+      "id": 5
     }
   ],
   "conversations": [
