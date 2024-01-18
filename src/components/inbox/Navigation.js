@@ -1,7 +1,16 @@
 import { Link } from "react-router-dom";
 import logoImage from "../../assets/images/lws-logo-dark.svg";
+import { useDispatch } from "react-redux";
+import { userLoggedIn, userLoggedOut } from "../../redux/features/auth/authSlice";
 
 export default function Navigation() {
+
+
+    const dispatch = useDispatch()
+    const logOut = ()=>{
+    dispatch(userLoggedOut())
+    localStorage.removeItem("auth")
+    }
     return (
         <nav className="border-general sticky top-0 z-40 border-b bg-violet-700 transition-colors">
             <div className="max-w-7xl mx-auto">
@@ -15,7 +24,7 @@ export default function Navigation() {
                     </Link>
                     <ul>
                         <li className="text-white">
-                            <a href="#">Logout</a>
+                            <span onClick={logOut}>Logout</span>
                         </li>
                     </ul>
                 </div>
