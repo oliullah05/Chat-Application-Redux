@@ -18,9 +18,8 @@ const useAuthCheck = () => {
                 }))
             }
         }
-        setTimeout(() => {
+      
             setAuthChecked(true)
-        }, 2000);
     }, [dispatch, setAuthChecked])
 
     return authChecked

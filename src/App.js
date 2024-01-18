@@ -4,6 +4,8 @@ import Inbox from "./pages/Inbox";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import useAuthCheck from "./hooks/useAuthCheck";
+import PrivateRoute from "./routes/PrivateRoute";
+import PublickRoute from "./routes/PublickRoute";
 
 function App() {
   const authChecked = useAuthCheck()
@@ -11,10 +13,10 @@ function App() {
     return !authChecked?<div>Checking Authunthication </div> :
     (<Router>
             <Routes>
-                <Route path="/" element={<Login />} />
-                <Route path="/register" element={<Register />} />
-                <Route path="/inbox" element={<Conversation />} />
-                <Route path="/inbox/:id" element={<Inbox />} />
+                <Route path="/" element={<PublickRoute><Login /></PublickRoute>} />
+                <Route path="/register" element={<PublickRoute><Register /></PublickRoute>} />
+                <Route path="/inbox" element={<PrivateRoute><Conversation /></PrivateRoute>} />
+                <Route path="/inbox/:id" element={<PrivateRoute><Inbox /></PrivateRoute>} />
             </Routes>
         </Router>)
 }
