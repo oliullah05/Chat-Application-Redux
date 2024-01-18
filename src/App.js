@@ -3,19 +3,20 @@ import Conversation from "./pages/Conversation";
 import Inbox from "./pages/Inbox";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import useAuthCheck from "./hooks/useAuthCheck";
 
 function App() {
-    console.log(process.env.REACT_APP_API_URL);
-    return (
-        <Router>
+  const authChecked = useAuthCheck()
+  console.log(authChecked);
+    return !authChecked?<div>Checking Authunthication </div> :
+    (<Router>
             <Routes>
                 <Route path="/" element={<Login />} />
                 <Route path="/register" element={<Register />} />
                 <Route path="/inbox" element={<Conversation />} />
                 <Route path="/inbox/:id" element={<Inbox />} />
             </Routes>
-        </Router>
-    );
+        </Router>)
 }
 
 export default App;
