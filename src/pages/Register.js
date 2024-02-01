@@ -1,47 +1,46 @@
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import logoImage from "../assets/images/lws-logo-light.svg";
-import { useEffect, useState } from "react";
-import { useRegisterMutation } from "../redux/features/auth/authApi";
 import Error from "../components/ui/Error";
+import { useRegisterMutation } from "../features/auth/authApi";
 
 export default function Register() {
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
+    const [agreed, setAgreed] = useState(false);
+    const [error, setError] = useState("");
 
-    const [name, setName] = useState('')
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
-    const [confirmPassword, setConfirmPassword] = useState('')
-    const [agreed, setAgreed] = useState(false)
-    const [error, setError] = useState("")
+    const [register, { data, isLoading, error: responseError }] =
+        useRegisterMutation();
 
-
-
-    const [register, { data, isLoading, error: responseErrorr }] = useRegisterMutation()
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     useEffect(() => {
-        if (responseErrorr?.data) {
-            setError(responseErrorr.data)
+        if (responseError?.data) {
+            setError(responseError.data);
         }
         if (data?.accessToken && data?.user) {
-            navigate("/inbox")
+            navigate("/inbox");
         }
-    }, [data, responseErrorr, navigate])
+    }, [data, responseError, navigate]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        setError("")
+
+        setError("");
+
         if (confirmPassword !== password) {
-            setError("Passwords do not matched")
-        }
-        else {
+            setError("Passwords do not match");
+        } else {
             register({
                 name,
                 email,
-                password
-            })
+                password,
+            });
         }
-    }
-
+    };
 
     return (
         <div className="grid place-items-center h-screen bg-[#F9FAFB">
@@ -59,8 +58,7 @@ export default function Register() {
                             Create your account
                         </h2>
                     </div>
-                    <form onSubmit={handleSubmit} className="mt-8 space-y-6">
-                        <input type="hidden" name="remember" value="true" />
+                    <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
                         <div className="rounded-md shadow-sm -space-y-px">
                             <div>
                                 <label htmlFor="name" className="sr-only">
@@ -112,7 +110,9 @@ export default function Register() {
                                     className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-violet-500 focus:border-violet-500 focus:z-10 sm:text-sm"
                                     placeholder="Password"
                                     value={password}
-                                    onChange={(e) => setPassword(e.target.value)}
+                                    onChange={(e) =>
+                                        setPassword(e.target.value)
+                                    }
                                 />
                             </div>
 
@@ -132,7 +132,9 @@ export default function Register() {
                                     className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-violet-500 focus:border-violet-500 focus:z-10 sm:text-sm"
                                     placeholder="confirmPassword"
                                     value={confirmPassword}
-                                    onChange={(e) => setConfirmPassword(e.target.value)}
+                                    onChange={(e) =>
+                                        setConfirmPassword(e.target.value)
+                                    }
                                 />
                             </div>
                         </div>
@@ -145,8 +147,10 @@ export default function Register() {
                                     type="checkbox"
                                     className="h-4 w-4 text-violet-600 focus:ring-violet-500 border-gray-300 rounded"
                                     checked={agreed}
-                                    onChange={(e) => setAgreed(e.target.checked)}
                                     required
+                                    onChange={(e) =>
+                                        setAgreed(e.target.checked)
+                                    }
                                 />
                                 <label
                                     htmlFor="accept-terms"
@@ -168,9 +172,7 @@ export default function Register() {
                             </button>
                         </div>
 
-                        {error &&
-                            <Error message={error}></Error>
-                        }
+                        {error !== "" && <Error message={error} />}
                     </form>
                 </div>
             </div>
