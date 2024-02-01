@@ -2,7 +2,6 @@ import { useSelector } from "react-redux";
 import Message from "./Message";
 
 export default function Messages({messages=[]}) {
-    console.log(messages,4444);
     const {user}= useSelector((state)=>state.auth  )
     const {email}=user;
 
@@ -12,7 +11,7 @@ export default function Messages({messages=[]}) {
                 {/* <Message justify="start" message={lastMessage} />
                 <Message justify="end" message="I am fine what about you?" /> */}
 {
-   messages.map((message)=>{
+   messages.slice().sort((a,b)=>a.timestamp-b.timestamp).map((message)=>{
     const {message:lastMessage,id,sender} =message ;
     const justify = sender?.email ===email ?"end":"start"
     return <Message key={id} justify={justify} message={lastMessage} />
