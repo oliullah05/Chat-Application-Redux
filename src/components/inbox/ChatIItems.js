@@ -16,6 +16,7 @@ export default function ChatItems() {
         isError,
         error,
     } = useGetConversationsQuery(email);
+
     // decide what to render
     let content = null;
 
@@ -28,10 +29,8 @@ export default function ChatItems() {
             </li>
         );
     } else if (!isLoading && !isError && conversations?.length === 0) {
-        console.log(isLoading,isError,conversations?.length === 0);
         content = <li className="m-2 text-center">No conversations found!</li>;
     } else if (!isLoading && !isError && conversations?.length > 0) {
-       
         content = conversations.map((conversation) => {
             const { id, message, timestamp } = conversation;
             const { email } = user || {};
