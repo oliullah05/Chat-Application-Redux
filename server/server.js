@@ -5,8 +5,25 @@ const http = require("http")
 const app = express()
 const server = http.createServer(app);
 const io = require('socket.io')(server)
-global.io=io;
+global.io = io;
 const router = jsonServer.router("db.json");
+
+
+
+//response middlewar
+router.render = (req, res) => {
+    const path = req.path;
+    const method = req.method;
+    if (path.includes("/conversations") && (method === "POST" || method === "PATCH")) {
+        //emmit socket event
+        io.emmit("conversation",{
+        data:res.locals.data
+        })
+
+    }
+    res.json(res.locals.data)
+}
+
 const middlewares = jsonServer.defaults();
 const port = process.env.PORT || 9000;
 
