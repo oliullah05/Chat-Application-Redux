@@ -20,7 +20,16 @@ export const conversationsApi = apiSlice.injectEndpoints({
                 try {
                     await cacheDataLoaded;
                     socket.on("conversation", (data) => {
-                     console.log(data,999999);
+                        updateCachedData(draft => {
+                            const conversation = draft.find(c => c.id == data?.data?.id);
+                            if (conversation?.id) {
+                                conversation.message = data.data.message;
+                                conversation.timestamp = data.data.timestamp;
+                            }
+                            else {
+                                //do nothing
+                            }
+                        })
                     });
                 } catch (err) {
                     console.error("Socket connection error:", err);
