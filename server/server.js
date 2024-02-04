@@ -16,13 +16,28 @@ router.render = (req, res) => {
     const method = req.method;
     if (path.includes("/conversations") && (method === "POST" || method === "PATCH")) {
         //emmit socket event
-        io.emmit("conversation",{
-        data:res.locals.data
+        io.emmit("conversation", {
+            data: res.locals.data
         })
 
     }
+    else if (path.includes("/messages") && method === "POST") {
+        io.emmit("messages", {
+            data: res.locals.data
+        })
+    }
+
+
+
     res.json(res.locals.data)
 }
+
+
+
+
+
+
+
 
 const middlewares = jsonServer.defaults();
 const port = process.env.PORT || 9000;
