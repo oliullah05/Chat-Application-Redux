@@ -1,11 +1,31 @@
+import { io } from "socket.io-client";
 import { apiSlice } from "../api/apiSlice";
 import { messagesApi } from "../messages/messagesApi";
-
 export const conversationsApi = apiSlice.injectEndpoints({
     endpoints: (builder) => ({
         getConversations: builder.query({
             query: (email) =>
                 `/conversations?participants_like=${email}&_sort=timestamp&_order=desc&_page=1&_limit=${process.env.REACT_APP_CONVERSATIONS_PER_PAGE}`,
+            async onCacheEntryAdded(arg, { updateCachedData, cacheDataLoaded, cacheEntryRemoved }) {
+                //create socket
+                const socket = io("http://localhost:9000", {
+                    reconnectionDelay: 1000,
+                    reconnection: true,
+                    reconnectionAttemps: 10,
+                    transports: ["websocket"],
+                    agent: false,
+                    upgrade: false,
+                    rejectUnauthorized: false,
+                });
+                try {
+                    await cacheDataLoaded;
+                    socket.on("conversation", (data) => {
+                     console.log(data,999999);
+                    });
+                } catch (err) {
+                    console.error("Socket connection error:", err);
+                }
+            }
         }),
         getConversation: builder.query({
             query: ({ userEmail, participantEmail }) =>
