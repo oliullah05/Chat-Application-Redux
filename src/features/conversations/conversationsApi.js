@@ -34,6 +34,9 @@ export const conversationsApi = apiSlice.injectEndpoints({
                 } catch (err) {
                     console.error("Socket connection error:", err);
                 }
+
+                await cacheEntryRemoved;
+                socket.close()
             }
         }),
         getConversation: builder.query({
@@ -113,10 +116,10 @@ export const conversationsApi = apiSlice.injectEndpoints({
 
                         //update messages cache pessimistically start
 
-                        dispatch(
-                            apiSlice.util.updateQueryData("getMessages", res.conversationId.toString(), (draft) => {
-                                draft.push(res)
-                            }))
+                        // dispatch(
+                        //     apiSlice.util.updateQueryData("getMessages", res.conversationId.toString(), (draft) => {
+                        //         draft.push(res)
+                        //     }))
 
 
                         //update messages cache pessimistically end
