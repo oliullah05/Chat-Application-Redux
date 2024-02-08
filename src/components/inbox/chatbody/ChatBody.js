@@ -32,7 +32,7 @@ export default function ChatBody() {
         content = (
             <>
                 <ChatHead message={messages[0]} />
-                <Messages messages={messages} />
+                <Messages messages={messages} id={id} />
                 <Options info={messages[0]} />
             </>
         );
