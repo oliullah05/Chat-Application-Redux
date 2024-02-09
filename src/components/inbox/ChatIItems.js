@@ -42,7 +42,7 @@ export default function ChatItems() {
             const more =
                 Math.ceil(
                     totalCount /
-                        Number(process.env.REACT_APP_CONVERSATIONS_PER_PAGE)
+                    Number(process.env.REACT_APP_CONVERSATIONS_PER_PAGE)
                 ) > page;
 
             setHasMore(more);
