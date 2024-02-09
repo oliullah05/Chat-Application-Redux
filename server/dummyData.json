@@ -1,0 +1,112 @@
+[
+    {
+        "img": "image1.jpg",
+        "name": "Product 1"
+    },
+    {
+        "img": "image2.jpg",
+        "name": "Product 2",
+        "type": "drinks",
+        "ml": [100, 200, 300]
+    },
+    {
+        "img": "image3.jpg",
+        "name": "Product 3",
+        "type": "dress",
+        "companyName": ["Nagad", "Google", "Ltd."],
+        "size": ["S", "M", "L", "XL"]
+    },
+    {
+        "img": "image4.jpg",
+        "name": "Product 4"
+    },
+    {
+        "img": "image5.jpg",
+        "name": "Product 5",
+        "type": "drinks",
+        "ml": [100, 200, 300]
+    },
+    {
+        "img": "image6.jpg",
+        "name": "Product 6",
+        "type": "dress",
+        "companyName": ["Nagad", "Google", "Ltd."],
+        "size": ["S", "M", "L", "XL"]
+    },
+    {
+        "img": "image7.jpg",
+        "name": "Product 7"
+    },
+    {
+        "img": "image8.jpg",
+        "name": "Product 8",
+        "type": "drinks",
+        "ml": [100, 200, 300]
+    },
+    {
+        "img": "image9.jpg",
+        "name": "Product 9",
+        "type": "dress",
+        "companyName": ["Nagad", "Google", "Ltd."],
+        "size": ["S", "M", "L", "XL"]
+    },
+    {
+        "img": "image10.jpg",
+        "name": "Product 10"
+    },
+    {
+        "img": "image11.jpg",
+        "name": "Product 11"
+    },
+    {
+        "img": "image12.jpg",
+        "name": "Product 12",
+        "type": "drinks",
+        "ml": [100, 200, 300]
+    },
+    {
+        "img": "image13.jpg",
+        "name": "Product 13",
+        "type": "dress",
+        "companyName": ["Nagad", "Google", "Ltd."],
+        "size": ["S", "M", "L", "XL"]
+    },
+    {
+        "img": "image14.jpg",
+        "name": "Product 14"
+    },
+    {
+        "img": "image15.jpg",
+        "name": "Product 15",
+        "type": "drinks",
+        "ml": [100, 200, 300]
+    },
+    {
+        "img": "image16.jpg",
+        "name": "Product 16",
+        "type": "dress",
+        "companyName": ["Nagad", "Google", "Ltd."],
+        "size": ["S", "M", "L", "XL"]
+    },
+    {
+        "img": "image17.jpg",
+        "name": "Product 17"
+    },
+    {
+        "img": "image18.jpg",
+        "name": "Product 18",
+        "type": "drinks",
+        "ml": [100, 200, 300]
+    },
+    {
+        "img": "image19.jpg",
+        "name": "Product 19",
+        "type": "dress",
+        "companyName": ["Nagad", "Google", "Ltd."],
+        "size": ["S", "M", "L", "XL"]
+    },
+    {
+        "img": "image20.jpg",
+        "name": "Product 20"
+    }
+]
